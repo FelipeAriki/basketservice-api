@@ -1,5 +1,6 @@
 package dev.java.ecommerce.basketservice.controller;
 
+import dev.java.ecommerce.basketservice.client.response.PlatziProductResponse;
 import dev.java.ecommerce.basketservice.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 public class ProductController {
 
     private final ProductService _productService;
@@ -18,12 +21,12 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Void> getAllProducts(){
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<PlatziProductResponse>> getAllProducts(){
+        return ResponseEntity.ok(_productService.getAllProducts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Void> getProductById(@PathVariable Long id){
-        return ResponseEntity.ok().build();
+    public ResponseEntity<PlatziProductResponse> getProductById(@PathVariable Long id){
+        return ResponseEntity.ok(_productService.getProductById(id));
     }
 }
