@@ -1,5 +1,7 @@
 package dev.java.ecommerce.basketservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import dev.java.ecommerce.basketservice.enums.PaymentMethod;
 import dev.java.ecommerce.basketservice.enums.ProductStatus;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -21,6 +23,9 @@ public class Basket {
     private BigDecimal totalPrice;
     private List<Product> products;
     private ProductStatus status;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private PaymentMethod paymentMethod;
 
     public void calculateTotalPrice(){
         this.totalPrice = products.stream()
