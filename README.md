@@ -1,0 +1,1 @@
+Projeto realizado no curso JAVA10X de gerenciamento de carrinho de compras, onde foi usado Java 21, Spring 3, Redis (cache da API externa), MongoDB (dados do carrinho), OpenFeign (integração com API externa) e Lombok. Serviços Redis e Mongo executados via Docker.
